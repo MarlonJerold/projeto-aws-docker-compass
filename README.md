@@ -151,6 +151,7 @@ Após configurar o Auto Scaling, uma nova instância será criada automaticament
 ### Fim
 Acesse o DNS do Load Balancer para se conectar ao projeto agora
 
+![image](https://github.com/user-attachments/assets/10f9e13e-ba15-4b65-b783-46f3436bcd19)
 
 
 
