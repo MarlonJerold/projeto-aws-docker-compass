@@ -8,6 +8,23 @@ Este trabalho tem como objetivo consolidar os conhecimentos em Docker e serviço
   <img src="https://github.com/user-attachments/assets/eda31610-d0d1-421b-a9d8-6eabf5d78d92" alt="Descrição da imagem" width="600">
 </p>
 
+# Sumário
+
+1. [Sobre o Projeto](#sobre-o-projeto)
+2. [Principais Objetivos](#principais-objetivos)
+3. [Serviços AWS Utilizados no Projeto](#serviços-aws-utilizados-no-projeto)
+4. [Ferramentas](#ferramentas)
+5. [Início](#início)
+6. [Grupo de Segurança](#grupo-de-segurança)
+7. [RDS](#rds)
+   - 7.1. [Grupo de Sub-redes Privadas](#grupo-de-sub-redes-privadas)
+   - 7.2. [Configurações RDS](#configurações-rds)
+8. [EFS](#efs)
+9. [EC2](#ec2)
+10. [Load Balancer](#load-balancer)
+11. [Auto Scaling](#auto-scaling)
+12. [Fim](#fim)
+
 ### Principais Objetivos
 - Instalação e Configuração:
   - Instalar e configurar Docker na instância EC2
