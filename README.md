@@ -99,15 +99,40 @@ sudo mkdir -p /mnt/efs
 sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport <id>:/ /mnt/efs
 ```
 
+### EC2
 
+- Nome e tags: Seguir o padrão da equipe.
+- Sistema operacional: Ubuntu.
+- Tipo de instância: Padrão.
+- Par de chaves: Criar ou reutilizar um existente.
+- Sub-redes:
+  - Instância 1: Sub-rede privada 1.
+  - Instância 2: Sub-rede privada 2.
+  - Atribuir IP público automaticamente: Habilitado.
+- Grupo de segurança: sgGroup-ec2
 
+Em Configurações avançadas, adicione o user_data.sh.
 
+### Load Balancer
+- Tipo: Classic Load Balancer.
+- Nome: MyLoadBalancer.
+- Mapeamento de rede: Sub-redes públicas.
+- Grupo de segurança: sgGroup-loadbalancer
+- Caminho de ping: /wp-admin/install.php (espera-se retorno com status 200).
+- Selecionar as duas instâncias que criamos privadas que criamos no tópico de EC2
 
+### Auto Scaling
+Modelo de Execução (Template):
+- Tipo de instância: t2.micro
+- Tags e User Data: Mesmos das instâncias EC2 anteriores
+- Zonas de disponibilidade: Sub-redes privadas
+- Integração: Load Balancer existente
+- Demais configurações: Padrão
 
+Após configurar o Auto Scaling, uma nova instância será criada automaticamente, confirmando que o processo foi concluído com sucesso
 
-
-
-
+### Fim
+Acesse o DNS do Load Balancer para se conectar ao projeto agora
 
 
 
