@@ -109,12 +109,29 @@ Ao criar o RDS, será gerado um IP, salve o IP para acessar o banco para adicion
 - Selecionar grupo de segurança: sgGroup-efs
 
 1. Após a criação, você vai acessar o comando de Anexar e "Usando o cliente do NFS"
-2. Você vai ter que copiar e salvar o comando de montagem do sistema de arquivo Amazon EFS
+2. Você vai ter que copiar e salvar o comando de montagem do sistema de arquivo Amazon EFS, localizado no arquivo user_data.sh
+
+Como estamos utilizando Ubuntu, precisamos instalar o Rust para criar o processo de build do nosso EFS e permitir sua montagem em nossa instância.
+
+### Instalação do EFS Utils
+```
+sudo apt-get update
+sudo apt-get -y install git binutils rustc cargo pkg-config libssl-dev
+git clone https://github.com/aws/efs-utils
+cd efs-utils
+./build-deb.sh
+sudo apt-get -y install ./build/amazon-efs-utils*deb
+```
+
+### Montagem do Sistema de Arquivos
+Após instalar o EFS Utils, podemos criar e montar nosso sistema de arquivos. Ele será utilizado para compartilhar arquivos entre instâncias.
+
 ```
 sudo mkdir -p /mnt/efs
-
-sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport <id>:/ /mnt/efs
+sudo mount -t efs -o tls fs-12345678:/ /mnt/efs
 ```
+
+Agora, ao criar um arquivo nesse diretório e acessá-lo a partir de outra instância conectada ao mesmo sistema de arquivos, o arquivo estará disponível em ambas.
 
 ### EC2
 
