@@ -166,7 +166,7 @@ Modelo de Execução (Template):
 
 Após configurar o Auto Scaling, uma nova instância será criada automaticamente, confirmando que o processo foi concluído com sucesso
 
-### Validação de sistem de arquivos
+### Validação de Sistem de Arquivos
 
 Foi criado um Bastion Host, um servidor que permite o acesso seguro a uma rede privada a partir da internet pública. Para isso, criaremos uma instância pública, nos conectaremos a ela via SSH e, estando dentro da nossa VPC, acessaremos outras instâncias privadas. Em uma dessas instâncias, criaremos um arquivo dentro da pasta EFS, chamado ```helloworld.txt```.
 
