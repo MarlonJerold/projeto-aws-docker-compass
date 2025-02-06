@@ -23,7 +23,8 @@ Este trabalho tem como objetivo consolidar os conhecimentos em Docker e serviço
 9. [EC2](#ec2)
 10. [Load Balancer](#load-balancer)
 11. [Auto Scaling](#auto-scaling)
-12. [Fim](#fim)
+12. [Validação de Sistem de Arquivos](#Validação-de-sistem-de-arquivos)
+13. [Fim](#fim)
 
 ### Principais Objetivos
 - Instalação e Configuração:
@@ -165,13 +166,22 @@ Modelo de Execução (Template):
 
 Após configurar o Auto Scaling, uma nova instância será criada automaticamente, confirmando que o processo foi concluído com sucesso
 
+### Validação de sistem de arquivos
+
+Foi criado um Bastion Host, um servidor que permite o acesso seguro a uma rede privada a partir da internet pública. Para isso, criaremos uma instância pública, nos conectaremos a ela via SSH e, estando dentro da nossa VPC, acessaremos outras instâncias privadas. Em uma dessas instâncias, criaremos um arquivo dentro da pasta EFS, chamado ```helloworld.txt```.
+
+### Instância 1 - EC2
+Criamos o arquivo na instância 1
+![image](https://github.com/user-attachments/assets/dedd7fbf-a6f9-4537-b2f0-31319dbe7b9f)
+
+### Instância 2 - EC2
+Temos acesso ao arquivo criado na instância 1 que está presente no nosso sistema de arquivos.
+![image](https://github.com/user-attachments/assets/73595500-1d89-4865-b42d-1c6bc34066a8)
+
 ### Fim
 Acesse o DNS do Load Balancer para se conectar ao projeto agora
 
 ![image](https://github.com/user-attachments/assets/10f9e13e-ba15-4b65-b783-46f3436bcd19)
-
-
-
 
 
 
